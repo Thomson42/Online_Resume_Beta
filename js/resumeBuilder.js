@@ -4,14 +4,16 @@ bio = {
     'name': 'Christopher Thomson',
     'role': 'Web Development and Political Assistance',
     'contacts': {
-        'Email': 'Christopher.thomson42@gmail.com',
-        'phone': '503-956-4825',
+        'email': 'Christopher.thomson42@gmail.com',
+        'mobile': '503-956-4825',
         'github': 'Thomson42',
         'location': 'Portland, Oregon'
     },
     'welcomeMessage': 'Hello Everyone! Glad to see you want to know more about me.',
     'skills': ['custum web desine', 'political analysis', 'political assistance', 'World builder'],
-    'biopic': 'images/sweater.jpg'
+    'biopic': 'images/sweater.jpg',
+    'display': 'function taking no parameters'
+
 };
 var work;
 work = {
@@ -41,22 +43,24 @@ var education;
 education = {
     'schools': [{
         'name': 'University of Oregon',
+        'location': 'Eugene, Oregon',
         'degree': 'Batchelors of Science',
         'major': 'Political Science',
         'dates': '2011-2013',
-        'location': 'Eugene, Oregon'
+        'url': 'https://uoregon.edu/'
     }, {
-        'name': 'Clacamas Comuinity College',
+        'name': 'Clackamas Community College',
+        'location': 'Oregon City, Oregon',
         'degree': 'Assoicates of the Arts Transfer degree',
         'major': 'Political Science',
         'dates': '2009-2011',
-        'location': 'Oregon City, Oregon'
+        'url': 'https://www.clackamas.edu/'
     }],
     'onlineCourses': [{
         'title': 'Web Developer Nano Degree',
         'school': 'Udacity',
         'dates': 'Jan 2016-Mar 2016',
-        'url': ''
+        'url': 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
 
     }],
     'display': 'function taking no parameters'
@@ -68,14 +72,14 @@ projects = {
         'title': 'Front Page',
         'dates': 'Jan, 15-Jan, 27',
         'description': 'My first website with limited functionality but good design.',
-        'images': 'array with string urls',
+        'images': ['array with string urls'],
         'display': 'function taking no parameters'
     }]
 };
 
 //From here we start makeing display functions by replaceing bits of the HTMLstring with our actual data
 
-function displayBio() {
+bio.display = function() {
     'use strict';
     var formattedName = HTMLheaderName.replace('%data%', bio.name);
     $('#header').prepend(formattedName);
@@ -86,6 +90,22 @@ function displayBio() {
     var formattedImage = HTMLbioPic.replace('%data%', bio.biopic);
     $('#header').prepend(formattedImage);
     
+    var formattedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
+    $('#header').append(formattedMobile);
+    $('#footerContacts').prepend(formattedMobile);
+    
+    var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
+    $('#header').append(formattedEmail);
+    $('#footerContacts').prepend(formattedEmail);
+    
+    var formattedGithub = HTMLgithub.replace('%data%', bio.contacts.github);
+    $('#header').append(formattedGithub);
+    $('#footerContacts').prepend(formattedGithub);
+    
+    var currentLocation = HTMLlocation.replace('%data%', bio.contacts.location);
+    $('#header').append(currentLocation);
+    $('#footerContacts').prepend(currentLocation);
+
     var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
     $('#header').append(formattedWelcomeMsg);
     $('#header').append(HTMLskillsStart);
@@ -96,7 +116,7 @@ function displayBio() {
             }
     }
 }
-displayBio();
+bio.display();
 
 work.display = function() {
     'use strict';
