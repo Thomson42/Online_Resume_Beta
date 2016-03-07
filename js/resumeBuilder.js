@@ -45,14 +45,14 @@ education = {
         'name': 'University of Oregon',
         'location': 'Eugene, Oregon',
         'degree': 'Batchelors of Science',
-        'major': 'Political Science',
+        'majors': 'Political Science',
         'dates': '2011-2013',
         'url': 'https://uoregon.edu/'
     }, {
         'name': 'Clackamas Community College',
         'location': 'Oregon City, Oregon',
         'degree': 'Assoicates of the Arts Transfer degree',
-        'major': 'Political Science',
+        'majors': 'Political Science',
         'dates': '2009-2011',
         'url': 'https://www.clackamas.edu/'
     }],
@@ -207,7 +207,7 @@ education.display = function() {
             var formattedSchoolLocation = HTMLschoolLocation.replace('%data%', education.schools[school].location);
             $('.education-entry:last').append(formattedSchoolLocation);
 
-            var formattedSchoolMajor = HTMLschoolMajor.replace('%data%', education.schools[school].major);
+            var formattedSchoolMajor = HTMLschoolMajor.replace('%data%', education.schools[school].majors);
             $('.education-entry:last').append(formattedSchoolMajor);
 
         }
